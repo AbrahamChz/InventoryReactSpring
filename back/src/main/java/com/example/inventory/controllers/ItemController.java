@@ -33,15 +33,23 @@ public class ItemController {
     }
 
     //Si con Put pongo el ID me lo actualiza, si no no :/
+    //Me quede con la duda si actualizar con el metodo Post o hacer un Put para esto, segun yo lo recomendable es PUT, hice una clase especifica para el Update
     @PutMapping("{id}")
     public ResponseEntity<?> updateItem(@RequestBody Item item, @PathVariable Long id){
         Optional<Item> a = service.getById(id);
         if(a.isEmpty()){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.createItem(item));
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.updateItem(item,id));
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> deleteItem(@PathVariable Long id){
+        service.deleteItem(id);
+        return ResponseEntity.noContent().build();
     }
 
 
-    //Me quede con la duda si actualizar con el metodo Post o hacer un Put para esto, segun yo lo recomendable es PUT
+
+
 }

@@ -4,10 +4,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from './components/App';
 import "./index.css";
+import Header from "./components/common/Header";
 
 
 render(
   <Router>
+    <Header/>
     <App />
   </Router>
 , document.getElementById("app")

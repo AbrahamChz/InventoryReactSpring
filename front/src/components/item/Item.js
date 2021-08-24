@@ -15,14 +15,17 @@ class Item extends React.Component {
         this.setState({item:item});
     }
 
+    handleSubmit = event => {
+        event.preventDefault();
+        alert(this.state.item.name);
+    }
+
     render() {
         return (
             <div>
-                
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <h2>Add Item</h2>
                     <input type="text" onChange={this.handleChange} value={this.state.item.name} />
-                    <input type="text" onChange={this.handleChange} value={this.state.item.description} />
                     <input type="sumbit" value="Save" />
                 </form>
                 

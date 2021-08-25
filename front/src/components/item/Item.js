@@ -1,5 +1,8 @@
 
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import * as itemActions from '../../redux/actions/itemActions';
+import PropTypes from 'prop-types';
 
 class Item extends React.Component {
 
@@ -17,6 +20,7 @@ class Item extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
+        this.props.dispatch(itemActions.createItem(this.state.item))
         alert(this.state.item.name);
     }
 
@@ -34,4 +38,16 @@ class Item extends React.Component {
     }
 }
 
-export default Item;
+function mapStateToProps(state) {
+    return{
+        items : state.items
+    }
+}
+
+Item.propTypes = {
+    dispatch : PropTypes.func.isRequired
+}
+
+//function mapDispatchToProps( ){}Despues se conectara
+
+export default connect(mapStateToProps)(Item);

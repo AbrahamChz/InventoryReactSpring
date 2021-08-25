@@ -7,6 +7,7 @@ const Header = () => {
     return (
         <nav>
             <NavLink to="/" activeStyle={activeStyle}>Home</NavLink> {" | "}
+            <NavLink to="/item" activeStyle={activeStyle}>Items</NavLink> {" | "}
             <NavLink to="/about" activeStyle={activeStyle}>About</NavLink>
         </nav>
     )

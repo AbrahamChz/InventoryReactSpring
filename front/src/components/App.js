@@ -4,7 +4,7 @@ import HomePage from './home/HomePage';
 import AboutPage from './about/AboutPage';
 import Header from './common/Header';
 import PageNotFound from './PageNotFound';
-import Item from './item/Item';
+import Item from './item/ItemPage';
 
 //Switch checks in which Path access, if it does not access, it means the page does not exist.
 function App(){

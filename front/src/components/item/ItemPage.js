@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as itemActions from '../../redux/actions/itemActions';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 
 class ItemPage extends React.Component {
 
@@ -20,7 +21,7 @@ class ItemPage extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.dispatch(itemActions.createItem(this.state.item))
+        this.props.actions.createItem(this.state.item)
         //alert(this.state.item.name);
     }
 
@@ -52,10 +53,14 @@ function mapStateToProps(state) {
 }
 
 ItemPage.propTypes = {
-    dispatch : PropTypes.func.isRequired,
+    actions : PropTypes.object.isRequired,
     items : PropTypes.array.isRequired
 }
 
-//function mapDispatchToProps( ){}Despues se conectara
+function mapDispatchToProps(dispatch){
+    return {
+        actions : bindActionCreators(itemActions, dispatch)
+    }
+}
 
-export default connect(mapStateToProps)(ItemPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemPage);
